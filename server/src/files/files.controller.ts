@@ -9,7 +9,12 @@ import {
     UseGuards, Query,
 } from '@nestjs/common';
 import {FilesService} from './files.service';
-import {ApiBearerAuth, ApiBody, ApiConsumes, ApiTags} from "@nestjs/swagger";
+import {
+    ApiBearerAuth,
+    ApiBody,
+    ApiConsumes,
+    ApiTags
+} from "@nestjs/swagger";
 import {FileInterceptor} from "@nestjs/platform-express";
 import {fileStorage} from "./storage";
 import {JwtAuthGuard} from "../auth/guards/jwt.guard";
@@ -46,11 +51,11 @@ export class FilesController {
             new MaxFileSizeValidator({maxSize: 1024 * 1024 * 5})
         ]
     })) file: Express.Multer.File, @UserId() userId: number) {
-        return this.filesService.create(file, userId );
+        return this.filesService.create(file, userId);
     }
 
     @Get()
     findAll(@UserId() userId: number, @Query("type") fileType: FileType) {
-        return this.filesService.findAll(userId,fileType)
+        return this.filesService.findAll(userId, fileType)
     }
 }
