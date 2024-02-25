@@ -10,9 +10,15 @@ async function bootstrap() {
         .setDescription('Данные облачного хранилища')
         .setVersion('1.0.0')
         .addTag('API')
+        .addBearerAuth()
         .build();
+
     const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('docs', app, document);
+    SwaggerModule.setup('docs', app, document, {
+        swaggerOptions: {
+            persistAuthorization: true
+        }
+    });
     app.enableCors({credentials: true, origin: true})
     app.use("/uploads", express.static(join(__dirname, "..", "uploads")) )
     await app.listen(3000);
