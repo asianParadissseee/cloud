@@ -1,8 +1,6 @@
-import {Injectable} from '@nestjs/common';
-import {CreateFileDto} from './dto/create-file.dto';
-import {UpdateFileDto} from './dto/update-file.dto';
+import {Injectable, InternalServerErrorException} from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
-import {FileEntity} from "./entities/file.entity";
+import {FileEntity, FileType} from "./entities/file.entity";
 import {Repository} from "typeorm";
 
 @Injectable()
@@ -14,23 +12,31 @@ export class FilesService {
     ) {
     }
 
-    create(createFileDto: CreateFileDto) {
-        return "";
+    create(file: Express.Multer.File, userId: number) {
+        try {
+            return this.repository.save({
+                filename: file.filename,
+                originalName: file.originalname,
+                size: file.size,
+                mimetype: file.mimetype,
+                users: {id: userId}
+            })
+        } catch (e) {
+            throw new InternalServerErrorException("Ошибка создания файлов")
+        }
     }
 
-    findAll() {
-        return this.repository.find();
+    findAll(userId: number, fileType: FileType) {
+        const qb = this.repository.createQueryBuilder("file")
+        qb.where("file.userId = :userId", {userId})
+        if (fileType === FileType.PHOTOS) {
+            qb.andWhere('file.mimetype ILIKE :type', {type: '%image%'});
+        }
+        if (fileType === FileType.TRASH) {
+            qb.withDeleted().andWhere("file.deleteAs IS NOT NULL")
+        }
+        return qb.getMany()
     }
 
-    findOne(id: number) {
-        return `This action returns a #${id} file`;
-    }
 
-    update(id: number, updateFileDto: UpdateFileDto) {
-        return `This action updates a #${id} file`;
-    }
-
-    remove(id: number) {
-        return `This action removes a #${id} file`;
-    }
 }
