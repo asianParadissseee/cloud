@@ -1,16 +1,16 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
-import {FileEntity} from "../../files/entities/file.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { FileEntity } from '../../files/entities/file.entity';
 
-@Entity("users")
+@Entity('users')
 export class UserEntity {
-    @PrimaryGeneratedColumn()
-    id: number
-    @Column()
-    email: string
-    @Column()
-    password: string
-    @Column()
-    fullName: string
-    @OneToMany(() => FileEntity, file => file.users)
-    files: FileEntity[]
+  @PrimaryGeneratedColumn()
+  id: number;
+  @Column()
+  email: string;
+  @Column()
+  password: string;
+  @Column()
+  fullName: string;
+  @OneToMany(() => FileEntity, (file) => file.users)
+  files: FileEntity[];
 }
