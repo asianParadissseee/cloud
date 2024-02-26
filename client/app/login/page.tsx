@@ -1,25 +1,25 @@
-import React from 'react';
-import AuthForm from "@/components/auth-form";
-import Head from "next/head";
+import React, {ReactNode} from 'react';
+import Head from "next/head"
 import {Tabs} from "antd";
+import LoginForm from "@/components/login-form";
 import RegistrationForm from "@/components/registration-form";
 
-const AuthPage = () => {
+const LoginPage = () => {
     return (
         <>
             <Head>
                 <title>Auth</title>
             </Head>
-            <main className="max-w-28 mx-auto w-full flex justify-center items-center">
+            <main className="max-w-80 mx-auto my-20">
                 <Tabs
                     items={[
                         {
                             label: "Войти",
                             key: "1",
-                            children: <AuthForm/>
+                            children: <LoginForm/>
                         },
                         {
-                            label: "Зарегистрироваться",
+                            label: "Регистрация",
                             key: "2",
                             children: <RegistrationForm/>
                         },
@@ -30,4 +30,4 @@ const AuthPage = () => {
     );
 };
 
-export default AuthPage;
+export default LoginPage;
