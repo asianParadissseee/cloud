@@ -8,6 +8,7 @@ import {
   MaxFileSizeValidator,
   UseGuards,
   Query,
+  Delete,
 } from '@nestjs/common';
 import { FilesService } from './files.service';
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
@@ -57,5 +58,10 @@ export class FilesController {
   @Get()
   findAll(@UserId() userId: number, @Query('type') fileType: FileType) {
     return this.filesService.findAll(userId, fileType);
+  }
+
+  @Delete()
+  remove(@UserId() userId: number, @Query('id') ids: string) {
+    return this.filesService.remove(userId, ids);
   }
 }
