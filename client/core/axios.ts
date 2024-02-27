@@ -8,4 +8,5 @@ axios.interceptors.request.use((config)=>{
         const {_token}  = parseCookies()
         config.headers.Authorization = `Bearer ${_token}`
     }
+    return config
 })
