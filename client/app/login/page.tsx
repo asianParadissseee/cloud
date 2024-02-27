@@ -2,7 +2,7 @@ import React, {ReactNode} from 'react';
 import Head from "next/head"
 import {Tabs} from "antd";
 import LoginForm from "@/components/login-form";
-import RegistrationForm from "@/components/registration-form";
+import {RegistrationForm} from "@/components/registration-form";
 
 const LoginPage = () => {
     return (

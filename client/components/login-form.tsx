@@ -51,18 +51,6 @@ export default function LoginForm() {
                     <Input/>
                 </Form.Item>
                 <Form.Item
-                    label={"Name"}
-                    name={"name"}
-                    rules={[
-                        {
-                            required: true,
-                            message: "Укажите имя"
-                        }
-                    ]}
-                >
-                    <Input/>
-                </Form.Item>
-                <Form.Item
                     label={"Password"}
                     name={"password"}
                     rules={[

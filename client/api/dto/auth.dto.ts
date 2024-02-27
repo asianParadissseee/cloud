@@ -1,10 +1,15 @@
 export interface LoginFormDto {
     email: string
-    fullName: string
     password: string
 }
 
 export interface LoginResponseDto {
     token: string
 }
+
+export type RegistrationFormDto = LoginFormDto & {
+    fullName: string
+}
+
+export type RegistrationResponseDto = LoginResponseDto
 
