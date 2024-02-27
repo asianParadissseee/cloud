@@ -1,11 +1,10 @@
 import React from 'react';
 
-const RegistrationForm = () => {
+export function RegistrationForm() {
     return (
         <div>
-            
+
         </div>
     );
 };
 
-export default RegistrationForm;
