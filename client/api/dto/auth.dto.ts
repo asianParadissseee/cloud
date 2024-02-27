@@ -13,3 +13,8 @@ export type RegistrationFormDto = LoginFormDto & {
 
 export type RegistrationResponseDto = LoginResponseDto
 
+export interface User {
+    id: number;
+    email: string
+    fullName: string
+}

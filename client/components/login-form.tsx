@@ -19,7 +19,7 @@ export default function LoginForm() {
             setCookie(null, "_token", token, {
                 path: "/"
             })
-
+            location.href = "/dashboard"
         } catch (e) {
             console.warn("Loginform", e)
             notification.error({
