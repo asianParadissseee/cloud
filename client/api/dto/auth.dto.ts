@@ -1,20 +1,17 @@
-export interface LoginFormDto {
-    email: string
-    password: string
+export interface LoginFormDTO {
+  email: string;
+  password: string;
 }
 
-export interface LoginResponseDto {
-    token: string
+export interface LoginResponseDTO {
+  token: string;
 }
 
-export type RegistrationFormDto = LoginFormDto & {
-    fullName: string
-}
-
-export type RegistrationResponseDto = LoginResponseDto
+export type RegisterFormDTO = LoginFormDTO & { fullName: string };
+export type RegisterResponseDTO = LoginResponseDTO;
 
 export interface User {
-    id: number;
-    email: string
-    fullName: string
+  id: number;
+  email: string;
+  fullName: string;
 }
