@@ -21,7 +21,7 @@ async function bootstrap() {
   });
   app.enableCors({ credentials: true, origin: true });
   app.use('/uploads', express.static(join(__dirname, '..', 'uploads')));
-  await app.listen(3000);
+  await app.listen(5000);
 }
 
 bootstrap();
