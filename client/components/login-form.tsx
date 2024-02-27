@@ -4,7 +4,7 @@ import {Button, Form, Input} from "antd";
 
 export default function LoginForm() {
 
-    const handleSubmit = (values)=>{
+    const handleSubmit = (values: Record<string, string>)=>{
         console.log(values)
     }
     return (
